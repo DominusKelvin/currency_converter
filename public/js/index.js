@@ -1,20 +1,28 @@
 document.addEventListener("DOMContentLoaded", fetchCurrencies);
+let currencyFrom = document.getElementById('currencyFrom')
+let currencyTo = document.getElementById('currencyTo')
+
 function fetchCurrencies() {
-    let currencyFrom = document.getElementById('currencyFrom')
-    let currencyTo = document.getElementById('currencyTo')
     fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         .then(response => {
-            response.json().then(function(data) {
-            console.log(data.length)
-            for (let i = 0; i < data.length; i++) {
-                let option = document.createElement('option');
-                console.log(data[i].id)
-                option.text = data[i].id;
-                option.value = data[i].currencyName;
-                currencyFrom.add(option);
-                currencyTo.add(option)
-            }   
-        })
-    });
-    console.log('Hello world')
+            return response.json()
+    }).then(function(data) {
+        let currencies = data.results
+        populateSelectBoxes(currencies)
+    }).catch(err => console.log(err));
+}
+
+function populateSelectBoxes(currencies) {
+    for ( currency in currencies) {
+        let optionFrom = document.createElement('option');
+        let optionTo = document.createElement('option')
+
+        optionFrom.text = currency
+        optionFrom.value = currency
+        currencyFrom.appendChild(optionFrom)
+
+        optionTo.text = currency
+        optionTo.value = currency
+        currencyTo.appendChild(optionTo)   
+    }
 }
