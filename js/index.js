@@ -1,3 +1,15 @@
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+            // Registration was successful
+            console.log('Oh yeah! oh yeah!, service worker is ready for you dominus', registration.scope)
+        }, function(err){
+            // registration failed :(
+            console.log('Sorry dominus, service worker not registered yet',  err)
+        })
+    })
+}
+
 document.addEventListener("DOMContentLoaded", fetchCurrencies); // adding event listener for when the DOM is loaded
 
 let currencyFrom = document.getElementById('currencyFrom')
