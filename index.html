@@ -12,15 +12,21 @@
     <div class="app-wrapper">
         <nav class="navbar"><!-- navbar begins here -->
             <ul>
-                <li class="navbrand"><a href="index.html">Currency Converter</a></li>
+                <li class="navbrand"><a href="/">Currency Converter</a></li>
             </ul>
         </nav><!-- navbar ends here -->
+
         <main class="main">
             <div class="currency-container">
                 <p class="label">
                     <input name="amount" type="text" id="amount" placeholder="Do enter amount" />
                 </p>
-                <p class="label"><span>From:</span>  <select id="currencyFrom"></select> <span>To:</span> <select id="currencyTo"></select></p>
+                <p class="label"><span>From:</span>  
+                <br /><select id="currencyFrom"></select>
+                <br /><br />
+                <span>To:</span> 
+                <br /><select id="currencyTo"></select></p>
+
                 <p class="label"><input type="text" id="convertedCurrency" readonly /></p>
                 <p class="label"><button id="convertButton">Convert</button></p>
             </div>

@@ -18,7 +18,7 @@ let currencyTo = document.getElementById('currencyTo')
 const baseUrl = 'https://free.currencyconverterapi.com/api/v5/'
 document.getElementById('convertButton').addEventListener('click', computeConversion)
 function fetchCurrencies() {
-    fetch(`${baseUrl}currencies`)
+    fetch(`${baseUrl}countries`)
         .then(response => {
             return response.json()
     }).then(function(data) {
@@ -32,11 +32,11 @@ function populateSelectBoxes(currencies) {
         let optionFrom = document.createElement('option');
         let optionTo = document.createElement('option')
 
-        optionFrom.text = currency
+        optionFrom.text = `${currencies[currency]['currencyName']}(${currency}) - ${currencies[currency]['currencySymbol']}`
         optionFrom.value = currency
         currencyFrom.appendChild(optionFrom)
 
-        optionTo.text = currency
+        optionTo.text = `${currencies[currency]['currencyName']}(${currency}) - ${currencies[currency]['currencySymbol']}`
         optionTo.value = currency
         currencyTo.appendChild(optionTo)   
     }
